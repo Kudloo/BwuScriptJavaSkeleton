@@ -1,6 +1,6 @@
 package net.botwithus;
 
-import net.botwithus.api.game.hud.inventories.Backpack;
+import net.botwithus.rs3.game.inventories.Backpack;
 import net.botwithus.internal.scripts.ScriptDefinition;
 import net.botwithus.rs3.game.Client;
 import net.botwithus.rs3.game.hud.interfaces.Interfaces;
@@ -59,17 +59,17 @@ public class SkeletonScript extends LoopingScript {
     }
 
     private long handleSkilling(LocalPlayer player) {
-        //for example, if skilling progress interface is open, return a randomized value to keep waiting.
-        if (Interfaces.isOpen(1251))
-            return random.nextLong(250,1500);
-        //if our inventory is full, lets bank.
-        if (Backpack.isFull()) {
-            println("Going to banking state!");
-            botState = BotState.BANKING;
-            return random.nextLong(250,1500);
-        }
-        //click my tree, mine my rock, etc...
-        SceneObject tree = SceneObjectQuery.newQuery().name("Tree").option("Chop").results().nearest();
+//        //for example, if skilling progress interface is open, return a randomized value to keep waiting.
+//        if (Interfaces.isOpen(1251))
+//            return random.nextLong(250,1500);
+//        //if our inventory is full, lets bank.
+//        if (Backpack.isFull()) {
+//            println("Going to banking state!");
+//            botState = BotState.BANKING;
+//            return random.nextLong(250,1500);
+//        }
+//        //click my tree, mine my rock, etc...
+        SceneObject tree = SceneObjectQuery.newQuery().name("Willow").option("Chop down").results().nearest();
         if (tree != null) {
             println("Interacted tree: " + tree.interact("Chop"));
         }
